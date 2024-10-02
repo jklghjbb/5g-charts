@@ -84,9 +84,9 @@ image:
     debug: false
 
 config:
-  amf:
-    hostname: open5gs-amf-ngap
+  f1ap:
     bind_interface: eth0
+    addr: 10.244.0.56
 
   ru_sdr:
     device_driver: zmq
