@@ -59,7 +59,9 @@ extraDeploy: []
 ## @param image.monitor.pullPolicy srsran image pull policy
 ## @param image.monitor.pullSecrets Specify docker-registry secret names as an array
 ## @param image.monitor.debug Specify if debug logs should be enabled
-##
+##\
+midhaul_network: default/midhaul-bridge-net
+
 image:
   srsran:
     registry: docker.io
@@ -85,8 +87,8 @@ image:
 
 config:
   f1ap:
-    bind_interface: eth0
-    addr: 10.244.0.56
+    bind_interface: net1
+    addr: 10.10.0.5
 
   ru_sdr:
     device_driver: zmq

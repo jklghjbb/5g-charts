@@ -27,6 +27,7 @@ spec:
         {{- include "common.tplvalues.render" (dict "value" .Values.podLabels "context" $) | nindent 8 }}
         {{- end }}
       annotations:
+        k8s.v1.cni.cncf.io/networks: {{ .Values.midhaul_network }} 
         {{- if .Values.podAnnotations }}
         {{- include "common.tplvalues.render" (dict "value" .Values.podAnnotations "context" $) | nindent 8 }}
         {{- end }}
@@ -87,6 +88,8 @@ spec:
               value: {{ .Values.config.amf.hostname }}
             - name: AMF_BIND_INTERFACE
               value: {{ .Values.config.amf.bind_interface }}
+            - name: F1AP_BIND_INTERFACE
+              value: {{ .Values.config.f1ap.bind_interface }}
             {{- if .Values.extraEnvVars }}
             {{- include "common.tplvalues.render" (dict "value" .Values.extraEnvVars "context" $) | nindent 12 }}
             {{- end }}

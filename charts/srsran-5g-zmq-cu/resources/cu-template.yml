@@ -14,7 +14,11 @@ cu_cp:
               - sst: 1
                 sd: 0x111111
   f1ap:
-    bind_addr: ${AMF_BIND_ADDR}
+    bind_addr: ${F1AP_BIND_ADDR}
+
+cu_up:
+  nru:
+    bind_addr: ${F1AP_BIND_ADDR}
 
 log:
   filename: ./cu.log            # Path of the log file.

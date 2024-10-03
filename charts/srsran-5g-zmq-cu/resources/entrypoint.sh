@@ -16,11 +16,10 @@ if [[ -z "${AMF_BIND_ADDR}" ]] ; then
     export AMF_BIND_ADDR=$(ip addr show $AMF_BIND_INTERFACE | grep -Po 'inet \K[\d.]+')
 fi
 
+if [[ -z "${F1AP_BIND_ADDR}" ]] ; then
+    export F1AP_BIND_ADDR=$(ip addr show $F1AP_BIND_INTERFACE | grep -Po 'inet \K[\d.]+')
+fi
+
 envsubst < /cu-template.yml > cu.yml
-
-
-# while true; do
-#     sleep 3600
-# done
 
 /opt/srsRAN_Project/target/bin/srscu -c cu.yml

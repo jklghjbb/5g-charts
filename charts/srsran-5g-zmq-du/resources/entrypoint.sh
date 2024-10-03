@@ -14,5 +14,4 @@ fi
 
 envsubst < /du-template.yml > du.yml
 
-
 /opt/srsRAN_Project/target/bin/srsdu -c du.yml 

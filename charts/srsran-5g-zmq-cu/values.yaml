@@ -60,6 +60,8 @@ extraDeploy: []
 ## @param image.monitor.pullSecrets Specify docker-registry secret names as an array
 ## @param image.monitor.debug Specify if debug logs should be enabled
 ##
+midhaul_network: default/midhaul-bridge-net
+
 image:
   srsran:
     registry: docker.io
@@ -87,6 +89,9 @@ config:
   amf:
     hostname: open5gs-amf-ngap
     bind_interface: eth0
+  
+  f1ap:
+    bind_interface: net1
 
   cell_cfg:
     dl_arfcn: 368500
