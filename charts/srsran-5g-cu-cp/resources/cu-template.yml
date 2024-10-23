@@ -1,0 +1,27 @@
+# This example configuration outlines how to configure the srsRAN Project cu to create a single TDD cell
+# transmitting in band 78, with 20 MHz bandwidth and 30 kHz sub-carrier-spacing. A USRP B200 is configured 
+# as the RF frontend using split 8. Note in this example an external clock source is not used, so the sync 
+# is not defined and the default is used. 
+cu_cp:
+  amf:
+    addr: ${AMF_ADDR}                  # The address or hostname of the AMF.
+    bind_addr: ${AMF_BIND_ADDR}             # A local IP that the cu binds to for traffic from the AMF.
+    supported_tracking_areas:
+      - tac: {{ .Values.config.cell_cfg.tac }} 
+        plmn_list:
+          - plmn: "{{ .Values.config.cell_cfg.plmn }}"
+            tai_slice_support_list:
+              - sst: 1
+                sd: 0x111111
+  f1ap:
+    bind_addr: ${F1AP_BIND_ADDR}
+  e1ap:
+    bind_addr: ${E1AP_BIND_ADDR}
+    bind_port: {{ .Values.config.e1ap.bind_port }}
+log:
+  filename: ./cu.log            # Path of the log file.
+  all_level: warning                   # Logging level applied to all layers.
+
+pcap:
+  ngap_enable: true                # Set to true to enable NGAP PCAPs.
+  ngap_filename: ./cu_ngap.pcap # Path where the NGAP PCAP is stored.

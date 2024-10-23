@@ -1,0 +1,20 @@
+cu_up:
+  upf:
+    bind_addr: ${UPF_BIND_ADDR} 
+  nru:
+    bind_addr: ${NRU_BIND_ADDR}
+  e1ap:
+    addr: {{ .Values.config.e1ap.cu_cp_addr }}
+    port: {{ .Values.config.e1ap.port }}
+
+log:
+  filename: ./cu.log            # Path of the log file.
+  all_level: info                   # Logging level applied to all layers.
+
+pcap:
+  n3_enable: false                # Set to true to enable NGAP PCAPs.
+  n3_filename: ./cu_n3.pcap # Path where the NGAP PCAP is stored.
+  f1u_enable: false
+  f1u_filename: ./cu_f1u.pcap
+  e1ap_enable: false
+  e1ap_filename: ./cu_e1.pcap
